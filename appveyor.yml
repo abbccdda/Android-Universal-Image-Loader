@@ -1,0 +1,16 @@
+environment:
+  ANDROID_HOME: C:\Program Files (x86)\Android\android-sdk
+
+cache:
+  - 'C:\Users\%USERNAME%\.m2\repository'
+  - '.gradle'
+
+install:
+  - echo y | "%ANDROID_HOME%\tools\android.bat" --silent update sdk --no-ui --all --filter android-23
+  - echo y | "%ANDROID_HOME%\tools\android.bat" update sdk -u -a -t build-tools-23.0.2,platform-tools,tools,extra
+  - mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B
+
+test_script:
+  - gradlew.bat check
+
+build: off
