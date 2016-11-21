@@ -7,7 +7,9 @@ cache:
 
 install:
   - echo y | "%ANDROID_HOME%\tools\android.bat" --silent update sdk --no-ui --all --filter android-23
-  - echo y | "%ANDROID_HOME%\tools\android.bat" update sdk -u -a -t build-tools-23.0.2,platform-tools,tools,extra
+  - echo y | "%ANDROID_HOME%\tools\android.bat" update sdk -u -a -t tool
+  - echo y | "%ANDROID_HOME%\tools\android.bat" update sdk -u -a -t build-tools-23.0.2
+  - echo y | "%ANDROID_HOME%\tools\android.bat" update sdk -u -a -t platform-tools,tools,extra
 
 test_script:
   - gradlew.bat build connectedCheck
